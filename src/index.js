@@ -1,22 +1,3 @@
-import React from 'react';
-import ReactDom from 'react-dom';
-
-// CSS
-import './index.css';
-
-const firstBook = {
-  img: 'https://images-na.ssl-images-amazon.com/images/I/81eB%2B7%2BCkUL._AC_UL200_SR200,200_.jpg',
-  title: 'I Love You to the Moon and Back',
-  author: 'Amelia Hepworth'
-}
-
-const secondBook = {
-  img: "https://images-na.ssl-images-amazon.com/images/I/81B9SEXh3cL._AC_UL200_SR200,200_.jpg",
-  title: "Billy Summers",
-  author: "Stephen-King",
-};
-
-
 // stateless functional component
 // always return JSX
 
@@ -28,31 +9,27 @@ const secondBook = {
 // close every element
 // formatting
 
+import React from 'react';
+import ReactDom from 'react-dom';
+
+// CSS
+import './index.css';
+import { books } from './books';
+import Book from './Book';
+import { greeting } from './testing/testing';
+
 function BookList() {
+  console.log(greeting);
   return (
     <section className='bookList'>
-      <Book
-        image={firstBook.img}
-        title={firstBook.title}
-        author={firstBook.author}
-      />
-      <Book
-        image={secondBook.img}
-        title={secondBook.title}
-        author={secondBook.author}
-      />
+      {books.map((book) => {
+        return (
+          // <Book key={book.id} book={book}></Book>
+          <Book key={book.id} {...book} />
+        );
+      })}
     </section>
   );
 }
-
-const Book = (props) => {
-  return (
-    <article className='book'>
-      <img src={props.image} alt='' />
-      <h1>{props.title}</h1>
-      <h4>{props.author}</h4>
-    </article>
-  );
-};
 
 ReactDom.render(<BookList />, document.getElementById('root'));
