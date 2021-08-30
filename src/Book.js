@@ -6,19 +6,18 @@ const Book = ({ img, title, author }) => {
 	// attribute, eventHandler
 	// onClick, onMouseOver
 	const clickHandler = (e) => {
-		console.log(e);
-		console.log(e.target);
 		alert('hello, world!');
 	}
 	const complexExample = (author) => {
 		console.log(author);
 	}
+
 	return (
-		<article className='book' onMouseOver={() => {
-			console.log(title);
-		}}>
-			<img src={img} alt='' />
-			<h1 onClick={() => console.log('inline example: ' + title)}>{title}</h1>
+		<article className='book'
+		// onMouseOver={() => { console.log(title); }}
+		>
+			<div className='bookimg'><img src={img} alt='' /></div>
+			{/* <h1 onClick={() => console.log('inline example: ' + title)}>{title}</h1> */}
 			<h4>{author}</h4>
 			<button type='button' onClick={clickHandler}>
 				reference example
@@ -32,6 +31,5 @@ const Book = ({ img, title, author }) => {
 		</article>
 	);
 };
-
 
 export default Book
